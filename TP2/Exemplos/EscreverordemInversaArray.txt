@@ -1,0 +1,20 @@
+LINT l[10];
+INT i;
+INT temp;
+
+ENQUANTO(i < 10) {
+    ESCREVER("Introduza um valor: ");
+    LER(l[i]);
+
+    i <- i+1;
+}
+
+i <- 9;
+
+ESCREVER("lista: [");
+ENQUANTO(i >= 0) {
+    ESCREVER(l[i]);
+    ESCREVER(",");
+    i <- i-1;
+}
+ESCREVER("]\n");

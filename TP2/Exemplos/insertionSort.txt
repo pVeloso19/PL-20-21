@@ -1,0 +1,61 @@
+INT i;
+INT j;
+INT count;
+INT temp; 
+LINT number[25];
+INT flag;
+
+ESCREVER("Insira o quantidade de números a introduzir: ");
+LER(count);
+
+ENQUANTO(i<count){
+   ESCREVER("Introduza o ", (i+1));
+   ESCREVER("º número: ");
+   LER(number[i]);
+   i <- i+1;
+}
+
+i <- 1;
+
+ENQUANTO(i<count){
+   temp <- number[i];
+   j <- i-1;
+
+   SE(temp<number[j]){
+   	SE(j>=0){
+         flag <- 1;
+      }{
+         flag <- 0;
+      }
+   }{
+      flag <- 0;
+   }
+
+   ENQUANTO(flag = 1){
+      number[j+1] <- number[j];
+      j <- j-1;
+      
+      SE(temp<number[j]){
+   	   SE(j>=0){
+            flag <- 1;
+         }{
+         flag <- 0;
+         }
+      }{
+         flag <- 0;
+      }
+   }
+   number[j+1] <- temp;
+   i <- i+1;
+}
+
+ESCREVER("Ordem dos elementos ordenados:\n");
+
+i <- 0;
+
+ENQUANTO(i<count){
+   ESCREVER(number[i]);
+   ESCREVER(" -> ");
+   i <- i+1;
+}
+ESCREVER("\n"); 

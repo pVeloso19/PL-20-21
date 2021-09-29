@@ -1,0 +1,23 @@
+INT n;
+INT temp;
+INT i;
+INT menor;
+
+menor <- 9999;
+
+ESCREVER("Introduza a quantidade de números a ler: ");
+LER(n);
+
+ENQUANTO(i<n) {
+    ESCREVER("Introduza um valor: ");
+    LER(temp);
+
+    SE(temp<menor){
+        menor <- temp;
+    }
+
+    i <- i+1;
+}
+
+ESCREVER("O menor valor introduzido foi: ", menor);
+ESCREVER("\n");

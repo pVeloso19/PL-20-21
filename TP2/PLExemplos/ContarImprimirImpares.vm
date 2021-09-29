@@ -1,0 +1,54 @@
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+START
+PUSHS "Introduza a quantidade de números a ler: "
+WRITES
+READ
+ATOI
+STOREG 0
+testa1: nop
+PUSHG 1
+PUSHG 0
+INF
+JZ saiciclo1
+PUSHS "Introduza um valor: "
+WRITES
+READ
+ATOI
+STOREG 3
+PUSHI 1
+PUSHG 3
+PUSHI 2
+MOD
+PUSHI 0
+EQUAL
+SUB
+JZ endIF0
+PUSHG 2
+PUSHI 1
+ADD
+STOREG 2
+PUSHS "É impar ("
+WRITES
+PUSHG 3
+WRITEI
+PUSHS ")\n"
+WRITES
+endIF0: nop
+PUSHG 1
+PUSHI 1
+ADD
+STOREG 1
+JUMP testa1
+saiciclo1: nop
+PUSHS "\n"
+WRITES
+PUSHS "Introduziu "
+WRITES
+PUSHG 2
+WRITEI
+PUSHS " números impares\n"
+WRITES
+STOP

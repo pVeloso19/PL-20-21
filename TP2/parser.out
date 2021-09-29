@@ -1,0 +1,1684 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> ZonaDeclaracao ZonaInstrucoes
+Rule 2     ZonaDeclaracao -> <empty>
+Rule 3     ZonaDeclaracao -> Declaracoes
+Rule 4     Declaracoes -> Declaracao
+Rule 5     Declaracoes -> Declaracoes Declaracao
+Rule 6     Declaracao -> INTDECL ID ;
+Rule 7     Declaracao -> LINTDECL ID Array ;
+Rule 8     Array -> [ INT ]
+Rule 9     Array -> Array [ INT ]
+Rule 10    ZonaInstrucoes -> <empty>
+Rule 11    ZonaInstrucoes -> Instrucoes
+Rule 12    Instrucoes -> Instrucao
+Rule 13    Instrucoes -> Instrucoes Instrucao
+Rule 14    Instrucao -> ID < - expressao ;
+Rule 15    Instrucao -> ID ListArrayExp < - expressao ;
+Rule 16    Instrucao -> SE ( condicao ) { if }
+Rule 17    Instrucao -> SE ( condicao ) { if } { else }
+Rule 18    if -> ZonaInstrucoes
+Rule 19    else -> ZonaInstrucoes
+Rule 20    Instrucao -> ENQUANTO ( condicao ) { ciclo }
+Rule 21    ciclo -> ZonaInstrucoes
+Rule 22    Instrucao -> LER ( ID ) ;
+Rule 23    Instrucao -> LER ( ID ListArrayExp ) ;
+Rule 24    Instrucao -> ESCREVER ( expressao ) ;
+Rule 25    Instrucao -> ESCREVER ( STRING ) ;
+Rule 26    Instrucao -> ESCREVER ( STRING , expressao ) ;
+Rule 27    condicao -> expressao < expressao
+Rule 28    condicao -> expressao > expressao
+Rule 29    condicao -> expressao < = expressao
+Rule 30    condicao -> expressao > = expressao
+Rule 31    condicao -> expressao = expressao
+Rule 32    condicao -> expressao ! = expressao
+Rule 33    expressao -> expressao + termo
+Rule 34    expressao -> expressao - termo
+Rule 35    expressao -> termo
+Rule 36    termo -> termo * fator
+Rule 37    termo -> termo % fator
+Rule 38    termo -> termo / fator
+Rule 39    termo -> fator
+Rule 40    fator -> INT
+Rule 41    fator -> ID
+Rule 42    fator -> ID ListArrayExp
+Rule 43    fator -> ( expressao )
+Rule 44    ListArrayExp -> [ expressao ]
+Rule 45    ListArrayExp -> ListArrayExp [ expressao ]
+
+Terminals, with rules where they appear
+
+!                    : 32
+%                    : 37
+(                    : 16 17 20 22 23 24 25 26 43
+)                    : 16 17 20 22 23 24 25 26 43
+*                    : 36
++                    : 33
+,                    : 26
+-                    : 14 15 34
+/                    : 38
+;                    : 6 7 14 15 22 23 24 25 26
+<                    : 14 15 27 29
+=                    : 29 30 31 32
+>                    : 28 30
+ENQUANTO             : 20
+ESCREVER             : 24 25 26
+ID                   : 6 7 14 15 22 23 41 42
+INT                  : 8 9 40
+INTDECL              : 6
+LER                  : 22 23
+LINTDECL             : 7
+SE                   : 16 17
+STRING               : 25 26
+[                    : 8 9 44 45
+]                    : 8 9 44 45
+error                : 
+{                    : 16 17 17 20
+}                    : 16 17 17 20
+
+Nonterminals, with rules where they appear
+
+Array                : 7 9
+Declaracao           : 4 5
+Declaracoes          : 3 5
+Instrucao            : 12 13
+Instrucoes           : 11 13
+ListArrayExp         : 15 23 42 45
+ZonaDeclaracao       : 1
+ZonaInstrucoes       : 1 18 19 21
+ciclo                : 20
+condicao             : 16 17 20
+else                 : 17
+expressao            : 14 15 24 26 27 27 28 28 29 29 30 30 31 31 32 32 33 34 43 44 45
+fator                : 36 37 38 39
+if                   : 16 17
+programa             : 0
+termo                : 33 34 35 36 37 38
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . ZonaDeclaracao ZonaInstrucoes
+    (2) ZonaDeclaracao -> .
+    (3) ZonaDeclaracao -> . Declaracoes
+    (4) Declaracoes -> . Declaracao
+    (5) Declaracoes -> . Declaracoes Declaracao
+    (6) Declaracao -> . INTDECL ID ;
+    (7) Declaracao -> . LINTDECL ID Array ;
+
+    ID              reduce using rule 2 (ZonaDeclaracao -> .)
+    SE              reduce using rule 2 (ZonaDeclaracao -> .)
+    ENQUANTO        reduce using rule 2 (ZonaDeclaracao -> .)
+    LER             reduce using rule 2 (ZonaDeclaracao -> .)
+    ESCREVER        reduce using rule 2 (ZonaDeclaracao -> .)
+    $end            reduce using rule 2 (ZonaDeclaracao -> .)
+    INTDECL         shift and go to state 5
+    LINTDECL        shift and go to state 6
+
+    programa                       shift and go to state 1
+    ZonaDeclaracao                 shift and go to state 2
+    Declaracoes                    shift and go to state 3
+    Declaracao                     shift and go to state 4
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> ZonaDeclaracao . ZonaInstrucoes
+    (10) ZonaInstrucoes -> .
+    (11) ZonaInstrucoes -> . Instrucoes
+    (12) Instrucoes -> . Instrucao
+    (13) Instrucoes -> . Instrucoes Instrucao
+    (14) Instrucao -> . ID < - expressao ;
+    (15) Instrucao -> . ID ListArrayExp < - expressao ;
+    (16) Instrucao -> . SE ( condicao ) { if }
+    (17) Instrucao -> . SE ( condicao ) { if } { else }
+    (20) Instrucao -> . ENQUANTO ( condicao ) { ciclo }
+    (22) Instrucao -> . LER ( ID ) ;
+    (23) Instrucao -> . LER ( ID ListArrayExp ) ;
+    (24) Instrucao -> . ESCREVER ( expressao ) ;
+    (25) Instrucao -> . ESCREVER ( STRING ) ;
+    (26) Instrucao -> . ESCREVER ( STRING , expressao ) ;
+
+    $end            reduce using rule 10 (ZonaInstrucoes -> .)
+    ID              shift and go to state 10
+    SE              shift and go to state 11
+    ENQUANTO        shift and go to state 12
+    LER             shift and go to state 13
+    ESCREVER        shift and go to state 14
+
+    ZonaInstrucoes                 shift and go to state 7
+    Instrucoes                     shift and go to state 8
+    Instrucao                      shift and go to state 9
+
+state 3
+
+    (3) ZonaDeclaracao -> Declaracoes .
+    (5) Declaracoes -> Declaracoes . Declaracao
+    (6) Declaracao -> . INTDECL ID ;
+    (7) Declaracao -> . LINTDECL ID Array ;
+
+    ID              reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    SE              reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    ENQUANTO        reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    LER             reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    ESCREVER        reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    $end            reduce using rule 3 (ZonaDeclaracao -> Declaracoes .)
+    INTDECL         shift and go to state 5
+    LINTDECL        shift and go to state 6
+
+    Declaracao                     shift and go to state 15
+
+state 4
+
+    (4) Declaracoes -> Declaracao .
+
+    INTDECL         reduce using rule 4 (Declaracoes -> Declaracao .)
+    LINTDECL        reduce using rule 4 (Declaracoes -> Declaracao .)
+    ID              reduce using rule 4 (Declaracoes -> Declaracao .)
+    SE              reduce using rule 4 (Declaracoes -> Declaracao .)
+    ENQUANTO        reduce using rule 4 (Declaracoes -> Declaracao .)
+    LER             reduce using rule 4 (Declaracoes -> Declaracao .)
+    ESCREVER        reduce using rule 4 (Declaracoes -> Declaracao .)
+    $end            reduce using rule 4 (Declaracoes -> Declaracao .)
+
+
+state 5
+
+    (6) Declaracao -> INTDECL . ID ;
+
+    ID              shift and go to state 16
+
+
+state 6
+
+    (7) Declaracao -> LINTDECL . ID Array ;
+
+    ID              shift and go to state 17
+
+
+state 7
+
+    (1) programa -> ZonaDeclaracao ZonaInstrucoes .
+
+    $end            reduce using rule 1 (programa -> ZonaDeclaracao ZonaInstrucoes .)
+
+
+state 8
+
+    (11) ZonaInstrucoes -> Instrucoes .
+    (13) Instrucoes -> Instrucoes . Instrucao
+    (14) Instrucao -> . ID < - expressao ;
+    (15) Instrucao -> . ID ListArrayExp < - expressao ;
+    (16) Instrucao -> . SE ( condicao ) { if }
+    (17) Instrucao -> . SE ( condicao ) { if } { else }
+    (20) Instrucao -> . ENQUANTO ( condicao ) { ciclo }
+    (22) Instrucao -> . LER ( ID ) ;
+    (23) Instrucao -> . LER ( ID ListArrayExp ) ;
+    (24) Instrucao -> . ESCREVER ( expressao ) ;
+    (25) Instrucao -> . ESCREVER ( STRING ) ;
+    (26) Instrucao -> . ESCREVER ( STRING , expressao ) ;
+
+    $end            reduce using rule 11 (ZonaInstrucoes -> Instrucoes .)
+    }               reduce using rule 11 (ZonaInstrucoes -> Instrucoes .)
+    ID              shift and go to state 10
+    SE              shift and go to state 11
+    ENQUANTO        shift and go to state 12
+    LER             shift and go to state 13
+    ESCREVER        shift and go to state 14
+
+    Instrucao                      shift and go to state 18
+
+state 9
+
+    (12) Instrucoes -> Instrucao .
+
+    ID              reduce using rule 12 (Instrucoes -> Instrucao .)
+    SE              reduce using rule 12 (Instrucoes -> Instrucao .)
+    ENQUANTO        reduce using rule 12 (Instrucoes -> Instrucao .)
+    LER             reduce using rule 12 (Instrucoes -> Instrucao .)
+    ESCREVER        reduce using rule 12 (Instrucoes -> Instrucao .)
+    $end            reduce using rule 12 (Instrucoes -> Instrucao .)
+    }               reduce using rule 12 (Instrucoes -> Instrucao .)
+
+
+state 10
+
+    (14) Instrucao -> ID . < - expressao ;
+    (15) Instrucao -> ID . ListArrayExp < - expressao ;
+    (44) ListArrayExp -> . [ expressao ]
+    (45) ListArrayExp -> . ListArrayExp [ expressao ]
+
+    <               shift and go to state 19
+    [               shift and go to state 21
+
+    ListArrayExp                   shift and go to state 20
+
+state 11
+
+    (16) Instrucao -> SE . ( condicao ) { if }
+    (17) Instrucao -> SE . ( condicao ) { if } { else }
+
+    (               shift and go to state 22
+
+
+state 12
+
+    (20) Instrucao -> ENQUANTO . ( condicao ) { ciclo }
+
+    (               shift and go to state 23
+
+
+state 13
+
+    (22) Instrucao -> LER . ( ID ) ;
+    (23) Instrucao -> LER . ( ID ListArrayExp ) ;
+
+    (               shift and go to state 24
+
+
+state 14
+
+    (24) Instrucao -> ESCREVER . ( expressao ) ;
+    (25) Instrucao -> ESCREVER . ( STRING ) ;
+    (26) Instrucao -> ESCREVER . ( STRING , expressao ) ;
+
+    (               shift and go to state 25
+
+
+state 15
+
+    (5) Declaracoes -> Declaracoes Declaracao .
+
+    INTDECL         reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    LINTDECL        reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    ID              reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    SE              reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    ENQUANTO        reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    LER             reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    ESCREVER        reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+    $end            reduce using rule 5 (Declaracoes -> Declaracoes Declaracao .)
+
+
+state 16
+
+    (6) Declaracao -> INTDECL ID . ;
+
+    ;               shift and go to state 26
+
+
+state 17
+
+    (7) Declaracao -> LINTDECL ID . Array ;
+    (8) Array -> . [ INT ]
+    (9) Array -> . Array [ INT ]
+
+    [               shift and go to state 28
+
+    Array                          shift and go to state 27
+
+state 18
+
+    (13) Instrucoes -> Instrucoes Instrucao .
+
+    ID              reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    SE              reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    ENQUANTO        reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    LER             reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    ESCREVER        reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    $end            reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+    }               reduce using rule 13 (Instrucoes -> Instrucoes Instrucao .)
+
+
+state 19
+
+    (14) Instrucao -> ID < . - expressao ;
+
+    -               shift and go to state 29
+
+
+state 20
+
+    (15) Instrucao -> ID ListArrayExp . < - expressao ;
+    (45) ListArrayExp -> ListArrayExp . [ expressao ]
+
+    <               shift and go to state 30
+    [               shift and go to state 31
+
+
+state 21
+
+    (44) ListArrayExp -> [ . expressao ]
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 32
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 22
+
+    (16) Instrucao -> SE ( . condicao ) { if }
+    (17) Instrucao -> SE ( . condicao ) { if } { else }
+    (27) condicao -> . expressao < expressao
+    (28) condicao -> . expressao > expressao
+    (29) condicao -> . expressao < = expressao
+    (30) condicao -> . expressao > = expressao
+    (31) condicao -> . expressao = expressao
+    (32) condicao -> . expressao ! = expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    condicao                       shift and go to state 38
+    expressao                      shift and go to state 39
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 23
+
+    (20) Instrucao -> ENQUANTO ( . condicao ) { ciclo }
+    (27) condicao -> . expressao < expressao
+    (28) condicao -> . expressao > expressao
+    (29) condicao -> . expressao < = expressao
+    (30) condicao -> . expressao > = expressao
+    (31) condicao -> . expressao = expressao
+    (32) condicao -> . expressao ! = expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    condicao                       shift and go to state 40
+    expressao                      shift and go to state 39
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 24
+
+    (22) Instrucao -> LER ( . ID ) ;
+    (23) Instrucao -> LER ( . ID ListArrayExp ) ;
+
+    ID              shift and go to state 41
+
+
+state 25
+
+    (24) Instrucao -> ESCREVER ( . expressao ) ;
+    (25) Instrucao -> ESCREVER ( . STRING ) ;
+    (26) Instrucao -> ESCREVER ( . STRING , expressao ) ;
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    STRING          shift and go to state 43
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 42
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 26
+
+    (6) Declaracao -> INTDECL ID ; .
+
+    INTDECL         reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    LINTDECL        reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    ID              reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    SE              reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    ENQUANTO        reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    LER             reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    ESCREVER        reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+    $end            reduce using rule 6 (Declaracao -> INTDECL ID ; .)
+
+
+state 27
+
+    (7) Declaracao -> LINTDECL ID Array . ;
+    (9) Array -> Array . [ INT ]
+
+    ;               shift and go to state 44
+    [               shift and go to state 45
+
+
+state 28
+
+    (8) Array -> [ . INT ]
+
+    INT             shift and go to state 46
+
+
+state 29
+
+    (14) Instrucao -> ID < - . expressao ;
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 47
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 30
+
+    (15) Instrucao -> ID ListArrayExp < . - expressao ;
+
+    -               shift and go to state 48
+
+
+state 31
+
+    (45) ListArrayExp -> ListArrayExp [ . expressao ]
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 49
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 32
+
+    (44) ListArrayExp -> [ expressao . ]
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    ]               shift and go to state 50
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 33
+
+    (35) expressao -> termo .
+    (36) termo -> termo . * fator
+    (37) termo -> termo . % fator
+    (38) termo -> termo . / fator
+
+    ]               reduce using rule 35 (expressao -> termo .)
+    +               reduce using rule 35 (expressao -> termo .)
+    -               reduce using rule 35 (expressao -> termo .)
+    <               reduce using rule 35 (expressao -> termo .)
+    >               reduce using rule 35 (expressao -> termo .)
+    =               reduce using rule 35 (expressao -> termo .)
+    !               reduce using rule 35 (expressao -> termo .)
+    )               reduce using rule 35 (expressao -> termo .)
+    ;               reduce using rule 35 (expressao -> termo .)
+    *               shift and go to state 53
+    %               shift and go to state 54
+    /               shift and go to state 55
+
+
+state 34
+
+    (39) termo -> fator .
+
+    *               reduce using rule 39 (termo -> fator .)
+    %               reduce using rule 39 (termo -> fator .)
+    /               reduce using rule 39 (termo -> fator .)
+    ]               reduce using rule 39 (termo -> fator .)
+    +               reduce using rule 39 (termo -> fator .)
+    -               reduce using rule 39 (termo -> fator .)
+    <               reduce using rule 39 (termo -> fator .)
+    >               reduce using rule 39 (termo -> fator .)
+    =               reduce using rule 39 (termo -> fator .)
+    !               reduce using rule 39 (termo -> fator .)
+    )               reduce using rule 39 (termo -> fator .)
+    ;               reduce using rule 39 (termo -> fator .)
+
+
+state 35
+
+    (40) fator -> INT .
+
+    *               reduce using rule 40 (fator -> INT .)
+    %               reduce using rule 40 (fator -> INT .)
+    /               reduce using rule 40 (fator -> INT .)
+    ]               reduce using rule 40 (fator -> INT .)
+    +               reduce using rule 40 (fator -> INT .)
+    -               reduce using rule 40 (fator -> INT .)
+    <               reduce using rule 40 (fator -> INT .)
+    >               reduce using rule 40 (fator -> INT .)
+    =               reduce using rule 40 (fator -> INT .)
+    !               reduce using rule 40 (fator -> INT .)
+    )               reduce using rule 40 (fator -> INT .)
+    ;               reduce using rule 40 (fator -> INT .)
+
+
+state 36
+
+    (41) fator -> ID .
+    (42) fator -> ID . ListArrayExp
+    (44) ListArrayExp -> . [ expressao ]
+    (45) ListArrayExp -> . ListArrayExp [ expressao ]
+
+    *               reduce using rule 41 (fator -> ID .)
+    %               reduce using rule 41 (fator -> ID .)
+    /               reduce using rule 41 (fator -> ID .)
+    ]               reduce using rule 41 (fator -> ID .)
+    +               reduce using rule 41 (fator -> ID .)
+    -               reduce using rule 41 (fator -> ID .)
+    <               reduce using rule 41 (fator -> ID .)
+    >               reduce using rule 41 (fator -> ID .)
+    =               reduce using rule 41 (fator -> ID .)
+    !               reduce using rule 41 (fator -> ID .)
+    )               reduce using rule 41 (fator -> ID .)
+    ;               reduce using rule 41 (fator -> ID .)
+    [               shift and go to state 21
+
+    ListArrayExp                   shift and go to state 56
+
+state 37
+
+    (43) fator -> ( . expressao )
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 57
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 38
+
+    (16) Instrucao -> SE ( condicao . ) { if }
+    (17) Instrucao -> SE ( condicao . ) { if } { else }
+
+    )               shift and go to state 58
+
+
+state 39
+
+    (27) condicao -> expressao . < expressao
+    (28) condicao -> expressao . > expressao
+    (29) condicao -> expressao . < = expressao
+    (30) condicao -> expressao . > = expressao
+    (31) condicao -> expressao . = expressao
+    (32) condicao -> expressao . ! = expressao
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    <               shift and go to state 59
+    >               shift and go to state 60
+    =               shift and go to state 61
+    !               shift and go to state 62
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 40
+
+    (20) Instrucao -> ENQUANTO ( condicao . ) { ciclo }
+
+    )               shift and go to state 63
+
+
+state 41
+
+    (22) Instrucao -> LER ( ID . ) ;
+    (23) Instrucao -> LER ( ID . ListArrayExp ) ;
+    (44) ListArrayExp -> . [ expressao ]
+    (45) ListArrayExp -> . ListArrayExp [ expressao ]
+
+    )               shift and go to state 64
+    [               shift and go to state 21
+
+    ListArrayExp                   shift and go to state 65
+
+state 42
+
+    (24) Instrucao -> ESCREVER ( expressao . ) ;
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               shift and go to state 66
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 43
+
+    (25) Instrucao -> ESCREVER ( STRING . ) ;
+    (26) Instrucao -> ESCREVER ( STRING . , expressao ) ;
+
+    )               shift and go to state 67
+    ,               shift and go to state 68
+
+
+state 44
+
+    (7) Declaracao -> LINTDECL ID Array ; .
+
+    INTDECL         reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    LINTDECL        reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    ID              reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    SE              reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    ENQUANTO        reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    LER             reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    ESCREVER        reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+    $end            reduce using rule 7 (Declaracao -> LINTDECL ID Array ; .)
+
+
+state 45
+
+    (9) Array -> Array [ . INT ]
+
+    INT             shift and go to state 69
+
+
+state 46
+
+    (8) Array -> [ INT . ]
+
+    ]               shift and go to state 70
+
+
+state 47
+
+    (14) Instrucao -> ID < - expressao . ;
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    ;               shift and go to state 71
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 48
+
+    (15) Instrucao -> ID ListArrayExp < - . expressao ;
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 72
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 49
+
+    (45) ListArrayExp -> ListArrayExp [ expressao . ]
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    ]               shift and go to state 73
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 50
+
+    (44) ListArrayExp -> [ expressao ] .
+
+    <               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    [               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    *               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    %               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    /               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    ]               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    +               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    -               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    >               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    =               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    !               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    )               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+    ;               reduce using rule 44 (ListArrayExp -> [ expressao ] .)
+
+
+state 51
+
+    (33) expressao -> expressao + . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    termo                          shift and go to state 74
+    fator                          shift and go to state 34
+
+state 52
+
+    (34) expressao -> expressao - . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    termo                          shift and go to state 75
+    fator                          shift and go to state 34
+
+state 53
+
+    (36) termo -> termo * . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    fator                          shift and go to state 76
+
+state 54
+
+    (37) termo -> termo % . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    fator                          shift and go to state 77
+
+state 55
+
+    (38) termo -> termo / . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    fator                          shift and go to state 78
+
+state 56
+
+    (42) fator -> ID ListArrayExp .
+    (45) ListArrayExp -> ListArrayExp . [ expressao ]
+
+    *               reduce using rule 42 (fator -> ID ListArrayExp .)
+    %               reduce using rule 42 (fator -> ID ListArrayExp .)
+    /               reduce using rule 42 (fator -> ID ListArrayExp .)
+    ]               reduce using rule 42 (fator -> ID ListArrayExp .)
+    +               reduce using rule 42 (fator -> ID ListArrayExp .)
+    -               reduce using rule 42 (fator -> ID ListArrayExp .)
+    <               reduce using rule 42 (fator -> ID ListArrayExp .)
+    >               reduce using rule 42 (fator -> ID ListArrayExp .)
+    =               reduce using rule 42 (fator -> ID ListArrayExp .)
+    !               reduce using rule 42 (fator -> ID ListArrayExp .)
+    )               reduce using rule 42 (fator -> ID ListArrayExp .)
+    ;               reduce using rule 42 (fator -> ID ListArrayExp .)
+    [               shift and go to state 31
+
+
+state 57
+
+    (43) fator -> ( expressao . )
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               shift and go to state 79
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 58
+
+    (16) Instrucao -> SE ( condicao ) . { if }
+    (17) Instrucao -> SE ( condicao ) . { if } { else }
+
+    {               shift and go to state 80
+
+
+state 59
+
+    (27) condicao -> expressao < . expressao
+    (29) condicao -> expressao < . = expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    =               shift and go to state 82
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 81
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 60
+
+    (28) condicao -> expressao > . expressao
+    (30) condicao -> expressao > . = expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    =               shift and go to state 84
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 83
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 61
+
+    (31) condicao -> expressao = . expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 85
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 62
+
+    (32) condicao -> expressao ! . = expressao
+
+    =               shift and go to state 86
+
+
+state 63
+
+    (20) Instrucao -> ENQUANTO ( condicao ) . { ciclo }
+
+    {               shift and go to state 87
+
+
+state 64
+
+    (22) Instrucao -> LER ( ID ) . ;
+
+    ;               shift and go to state 88
+
+
+state 65
+
+    (23) Instrucao -> LER ( ID ListArrayExp . ) ;
+    (45) ListArrayExp -> ListArrayExp . [ expressao ]
+
+    )               shift and go to state 89
+    [               shift and go to state 31
+
+
+state 66
+
+    (24) Instrucao -> ESCREVER ( expressao ) . ;
+
+    ;               shift and go to state 90
+
+
+state 67
+
+    (25) Instrucao -> ESCREVER ( STRING ) . ;
+
+    ;               shift and go to state 91
+
+
+state 68
+
+    (26) Instrucao -> ESCREVER ( STRING , . expressao ) ;
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 92
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 69
+
+    (9) Array -> Array [ INT . ]
+
+    ]               shift and go to state 93
+
+
+state 70
+
+    (8) Array -> [ INT ] .
+
+    ;               reduce using rule 8 (Array -> [ INT ] .)
+    [               reduce using rule 8 (Array -> [ INT ] .)
+
+
+state 71
+
+    (14) Instrucao -> ID < - expressao ; .
+
+    ID              reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    SE              reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    ENQUANTO        reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    LER             reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    ESCREVER        reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    $end            reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+    }               reduce using rule 14 (Instrucao -> ID < - expressao ; .)
+
+
+state 72
+
+    (15) Instrucao -> ID ListArrayExp < - expressao . ;
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    ;               shift and go to state 94
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 73
+
+    (45) ListArrayExp -> ListArrayExp [ expressao ] .
+
+    <               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    [               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    *               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    %               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    /               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    ]               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    +               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    -               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    >               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    =               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    !               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    )               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+    ;               reduce using rule 45 (ListArrayExp -> ListArrayExp [ expressao ] .)
+
+
+state 74
+
+    (33) expressao -> expressao + termo .
+    (36) termo -> termo . * fator
+    (37) termo -> termo . % fator
+    (38) termo -> termo . / fator
+
+    ]               reduce using rule 33 (expressao -> expressao + termo .)
+    +               reduce using rule 33 (expressao -> expressao + termo .)
+    -               reduce using rule 33 (expressao -> expressao + termo .)
+    <               reduce using rule 33 (expressao -> expressao + termo .)
+    >               reduce using rule 33 (expressao -> expressao + termo .)
+    =               reduce using rule 33 (expressao -> expressao + termo .)
+    !               reduce using rule 33 (expressao -> expressao + termo .)
+    )               reduce using rule 33 (expressao -> expressao + termo .)
+    ;               reduce using rule 33 (expressao -> expressao + termo .)
+    *               shift and go to state 53
+    %               shift and go to state 54
+    /               shift and go to state 55
+
+
+state 75
+
+    (34) expressao -> expressao - termo .
+    (36) termo -> termo . * fator
+    (37) termo -> termo . % fator
+    (38) termo -> termo . / fator
+
+    ]               reduce using rule 34 (expressao -> expressao - termo .)
+    +               reduce using rule 34 (expressao -> expressao - termo .)
+    -               reduce using rule 34 (expressao -> expressao - termo .)
+    <               reduce using rule 34 (expressao -> expressao - termo .)
+    >               reduce using rule 34 (expressao -> expressao - termo .)
+    =               reduce using rule 34 (expressao -> expressao - termo .)
+    !               reduce using rule 34 (expressao -> expressao - termo .)
+    )               reduce using rule 34 (expressao -> expressao - termo .)
+    ;               reduce using rule 34 (expressao -> expressao - termo .)
+    *               shift and go to state 53
+    %               shift and go to state 54
+    /               shift and go to state 55
+
+
+state 76
+
+    (36) termo -> termo * fator .
+
+    *               reduce using rule 36 (termo -> termo * fator .)
+    %               reduce using rule 36 (termo -> termo * fator .)
+    /               reduce using rule 36 (termo -> termo * fator .)
+    ]               reduce using rule 36 (termo -> termo * fator .)
+    +               reduce using rule 36 (termo -> termo * fator .)
+    -               reduce using rule 36 (termo -> termo * fator .)
+    <               reduce using rule 36 (termo -> termo * fator .)
+    >               reduce using rule 36 (termo -> termo * fator .)
+    =               reduce using rule 36 (termo -> termo * fator .)
+    !               reduce using rule 36 (termo -> termo * fator .)
+    )               reduce using rule 36 (termo -> termo * fator .)
+    ;               reduce using rule 36 (termo -> termo * fator .)
+
+
+state 77
+
+    (37) termo -> termo % fator .
+
+    *               reduce using rule 37 (termo -> termo % fator .)
+    %               reduce using rule 37 (termo -> termo % fator .)
+    /               reduce using rule 37 (termo -> termo % fator .)
+    ]               reduce using rule 37 (termo -> termo % fator .)
+    +               reduce using rule 37 (termo -> termo % fator .)
+    -               reduce using rule 37 (termo -> termo % fator .)
+    <               reduce using rule 37 (termo -> termo % fator .)
+    >               reduce using rule 37 (termo -> termo % fator .)
+    =               reduce using rule 37 (termo -> termo % fator .)
+    !               reduce using rule 37 (termo -> termo % fator .)
+    )               reduce using rule 37 (termo -> termo % fator .)
+    ;               reduce using rule 37 (termo -> termo % fator .)
+
+
+state 78
+
+    (38) termo -> termo / fator .
+
+    *               reduce using rule 38 (termo -> termo / fator .)
+    %               reduce using rule 38 (termo -> termo / fator .)
+    /               reduce using rule 38 (termo -> termo / fator .)
+    ]               reduce using rule 38 (termo -> termo / fator .)
+    +               reduce using rule 38 (termo -> termo / fator .)
+    -               reduce using rule 38 (termo -> termo / fator .)
+    <               reduce using rule 38 (termo -> termo / fator .)
+    >               reduce using rule 38 (termo -> termo / fator .)
+    =               reduce using rule 38 (termo -> termo / fator .)
+    !               reduce using rule 38 (termo -> termo / fator .)
+    )               reduce using rule 38 (termo -> termo / fator .)
+    ;               reduce using rule 38 (termo -> termo / fator .)
+
+
+state 79
+
+    (43) fator -> ( expressao ) .
+
+    *               reduce using rule 43 (fator -> ( expressao ) .)
+    %               reduce using rule 43 (fator -> ( expressao ) .)
+    /               reduce using rule 43 (fator -> ( expressao ) .)
+    ]               reduce using rule 43 (fator -> ( expressao ) .)
+    +               reduce using rule 43 (fator -> ( expressao ) .)
+    -               reduce using rule 43 (fator -> ( expressao ) .)
+    <               reduce using rule 43 (fator -> ( expressao ) .)
+    >               reduce using rule 43 (fator -> ( expressao ) .)
+    =               reduce using rule 43 (fator -> ( expressao ) .)
+    !               reduce using rule 43 (fator -> ( expressao ) .)
+    )               reduce using rule 43 (fator -> ( expressao ) .)
+    ;               reduce using rule 43 (fator -> ( expressao ) .)
+
+
+state 80
+
+    (16) Instrucao -> SE ( condicao ) { . if }
+    (17) Instrucao -> SE ( condicao ) { . if } { else }
+    (18) if -> . ZonaInstrucoes
+    (10) ZonaInstrucoes -> .
+    (11) ZonaInstrucoes -> . Instrucoes
+    (12) Instrucoes -> . Instrucao
+    (13) Instrucoes -> . Instrucoes Instrucao
+    (14) Instrucao -> . ID < - expressao ;
+    (15) Instrucao -> . ID ListArrayExp < - expressao ;
+    (16) Instrucao -> . SE ( condicao ) { if }
+    (17) Instrucao -> . SE ( condicao ) { if } { else }
+    (20) Instrucao -> . ENQUANTO ( condicao ) { ciclo }
+    (22) Instrucao -> . LER ( ID ) ;
+    (23) Instrucao -> . LER ( ID ListArrayExp ) ;
+    (24) Instrucao -> . ESCREVER ( expressao ) ;
+    (25) Instrucao -> . ESCREVER ( STRING ) ;
+    (26) Instrucao -> . ESCREVER ( STRING , expressao ) ;
+
+    }               reduce using rule 10 (ZonaInstrucoes -> .)
+    ID              shift and go to state 10
+    SE              shift and go to state 11
+    ENQUANTO        shift and go to state 12
+    LER             shift and go to state 13
+    ESCREVER        shift and go to state 14
+
+    if                             shift and go to state 95
+    ZonaInstrucoes                 shift and go to state 96
+    Instrucoes                     shift and go to state 8
+    Instrucao                      shift and go to state 9
+
+state 81
+
+    (27) condicao -> expressao < expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 27 (condicao -> expressao < expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 82
+
+    (29) condicao -> expressao < = . expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 97
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 83
+
+    (28) condicao -> expressao > expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 28 (condicao -> expressao > expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 84
+
+    (30) condicao -> expressao > = . expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 98
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 85
+
+    (31) condicao -> expressao = expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 31 (condicao -> expressao = expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 86
+
+    (32) condicao -> expressao ! = . expressao
+    (33) expressao -> . expressao + termo
+    (34) expressao -> . expressao - termo
+    (35) expressao -> . termo
+    (36) termo -> . termo * fator
+    (37) termo -> . termo % fator
+    (38) termo -> . termo / fator
+    (39) termo -> . fator
+    (40) fator -> . INT
+    (41) fator -> . ID
+    (42) fator -> . ID ListArrayExp
+    (43) fator -> . ( expressao )
+
+    INT             shift and go to state 35
+    ID              shift and go to state 36
+    (               shift and go to state 37
+
+    expressao                      shift and go to state 99
+    termo                          shift and go to state 33
+    fator                          shift and go to state 34
+
+state 87
+
+    (20) Instrucao -> ENQUANTO ( condicao ) { . ciclo }
+    (21) ciclo -> . ZonaInstrucoes
+    (10) ZonaInstrucoes -> .
+    (11) ZonaInstrucoes -> . Instrucoes
+    (12) Instrucoes -> . Instrucao
+    (13) Instrucoes -> . Instrucoes Instrucao
+    (14) Instrucao -> . ID < - expressao ;
+    (15) Instrucao -> . ID ListArrayExp < - expressao ;
+    (16) Instrucao -> . SE ( condicao ) { if }
+    (17) Instrucao -> . SE ( condicao ) { if } { else }
+    (20) Instrucao -> . ENQUANTO ( condicao ) { ciclo }
+    (22) Instrucao -> . LER ( ID ) ;
+    (23) Instrucao -> . LER ( ID ListArrayExp ) ;
+    (24) Instrucao -> . ESCREVER ( expressao ) ;
+    (25) Instrucao -> . ESCREVER ( STRING ) ;
+    (26) Instrucao -> . ESCREVER ( STRING , expressao ) ;
+
+    }               reduce using rule 10 (ZonaInstrucoes -> .)
+    ID              shift and go to state 10
+    SE              shift and go to state 11
+    ENQUANTO        shift and go to state 12
+    LER             shift and go to state 13
+    ESCREVER        shift and go to state 14
+
+    ciclo                          shift and go to state 100
+    ZonaInstrucoes                 shift and go to state 101
+    Instrucoes                     shift and go to state 8
+    Instrucao                      shift and go to state 9
+
+state 88
+
+    (22) Instrucao -> LER ( ID ) ; .
+
+    ID              reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    SE              reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    ENQUANTO        reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    LER             reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    ESCREVER        reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    $end            reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+    }               reduce using rule 22 (Instrucao -> LER ( ID ) ; .)
+
+
+state 89
+
+    (23) Instrucao -> LER ( ID ListArrayExp ) . ;
+
+    ;               shift and go to state 102
+
+
+state 90
+
+    (24) Instrucao -> ESCREVER ( expressao ) ; .
+
+    ID              reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    SE              reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    ENQUANTO        reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    LER             reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    ESCREVER        reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    $end            reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+    }               reduce using rule 24 (Instrucao -> ESCREVER ( expressao ) ; .)
+
+
+state 91
+
+    (25) Instrucao -> ESCREVER ( STRING ) ; .
+
+    ID              reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    SE              reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    ENQUANTO        reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    LER             reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    ESCREVER        reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    $end            reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+    }               reduce using rule 25 (Instrucao -> ESCREVER ( STRING ) ; .)
+
+
+state 92
+
+    (26) Instrucao -> ESCREVER ( STRING , expressao . ) ;
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               shift and go to state 103
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 93
+
+    (9) Array -> Array [ INT ] .
+
+    ;               reduce using rule 9 (Array -> Array [ INT ] .)
+    [               reduce using rule 9 (Array -> Array [ INT ] .)
+
+
+state 94
+
+    (15) Instrucao -> ID ListArrayExp < - expressao ; .
+
+    ID              reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    SE              reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    ENQUANTO        reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    LER             reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    ESCREVER        reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    $end            reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+    }               reduce using rule 15 (Instrucao -> ID ListArrayExp < - expressao ; .)
+
+
+state 95
+
+    (16) Instrucao -> SE ( condicao ) { if . }
+    (17) Instrucao -> SE ( condicao ) { if . } { else }
+
+    }               shift and go to state 104
+
+
+state 96
+
+    (18) if -> ZonaInstrucoes .
+
+    }               reduce using rule 18 (if -> ZonaInstrucoes .)
+
+
+state 97
+
+    (29) condicao -> expressao < = expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 29 (condicao -> expressao < = expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 98
+
+    (30) condicao -> expressao > = expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 30 (condicao -> expressao > = expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 99
+
+    (32) condicao -> expressao ! = expressao .
+    (33) expressao -> expressao . + termo
+    (34) expressao -> expressao . - termo
+
+    )               reduce using rule 32 (condicao -> expressao ! = expressao .)
+    +               shift and go to state 51
+    -               shift and go to state 52
+
+
+state 100
+
+    (20) Instrucao -> ENQUANTO ( condicao ) { ciclo . }
+
+    }               shift and go to state 105
+
+
+state 101
+
+    (21) ciclo -> ZonaInstrucoes .
+
+    }               reduce using rule 21 (ciclo -> ZonaInstrucoes .)
+
+
+state 102
+
+    (23) Instrucao -> LER ( ID ListArrayExp ) ; .
+
+    ID              reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    SE              reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    ENQUANTO        reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    LER             reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    ESCREVER        reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    $end            reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+    }               reduce using rule 23 (Instrucao -> LER ( ID ListArrayExp ) ; .)
+
+
+state 103
+
+    (26) Instrucao -> ESCREVER ( STRING , expressao ) . ;
+
+    ;               shift and go to state 106
+
+
+state 104
+
+    (16) Instrucao -> SE ( condicao ) { if } .
+    (17) Instrucao -> SE ( condicao ) { if } . { else }
+
+    ID              reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    SE              reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    ENQUANTO        reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    LER             reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    ESCREVER        reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    $end            reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    }               reduce using rule 16 (Instrucao -> SE ( condicao ) { if } .)
+    {               shift and go to state 107
+
+
+state 105
+
+    (20) Instrucao -> ENQUANTO ( condicao ) { ciclo } .
+
+    ID              reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    SE              reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    ENQUANTO        reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    LER             reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    ESCREVER        reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    $end            reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+    }               reduce using rule 20 (Instrucao -> ENQUANTO ( condicao ) { ciclo } .)
+
+
+state 106
+
+    (26) Instrucao -> ESCREVER ( STRING , expressao ) ; .
+
+    ID              reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    SE              reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    ENQUANTO        reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    LER             reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    ESCREVER        reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    $end            reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+    }               reduce using rule 26 (Instrucao -> ESCREVER ( STRING , expressao ) ; .)
+
+
+state 107
+
+    (17) Instrucao -> SE ( condicao ) { if } { . else }
+    (19) else -> . ZonaInstrucoes
+    (10) ZonaInstrucoes -> .
+    (11) ZonaInstrucoes -> . Instrucoes
+    (12) Instrucoes -> . Instrucao
+    (13) Instrucoes -> . Instrucoes Instrucao
+    (14) Instrucao -> . ID < - expressao ;
+    (15) Instrucao -> . ID ListArrayExp < - expressao ;
+    (16) Instrucao -> . SE ( condicao ) { if }
+    (17) Instrucao -> . SE ( condicao ) { if } { else }
+    (20) Instrucao -> . ENQUANTO ( condicao ) { ciclo }
+    (22) Instrucao -> . LER ( ID ) ;
+    (23) Instrucao -> . LER ( ID ListArrayExp ) ;
+    (24) Instrucao -> . ESCREVER ( expressao ) ;
+    (25) Instrucao -> . ESCREVER ( STRING ) ;
+    (26) Instrucao -> . ESCREVER ( STRING , expressao ) ;
+
+    }               reduce using rule 10 (ZonaInstrucoes -> .)
+    ID              shift and go to state 10
+    SE              shift and go to state 11
+    ENQUANTO        shift and go to state 12
+    LER             shift and go to state 13
+    ESCREVER        shift and go to state 14
+
+    else                           shift and go to state 108
+    ZonaInstrucoes                 shift and go to state 109
+    Instrucoes                     shift and go to state 8
+    Instrucao                      shift and go to state 9
+
+state 108
+
+    (17) Instrucao -> SE ( condicao ) { if } { else . }
+
+    }               shift and go to state 110
+
+
+state 109
+
+    (19) else -> ZonaInstrucoes .
+
+    }               reduce using rule 19 (else -> ZonaInstrucoes .)
+
+
+state 110
+
+    (17) Instrucao -> SE ( condicao ) { if } { else } .
+
+    ID              reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    SE              reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    ENQUANTO        reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    LER             reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    ESCREVER        reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    $end            reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+    }               reduce using rule 17 (Instrucao -> SE ( condicao ) { if } { else } .)
+

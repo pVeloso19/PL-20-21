@@ -1,0 +1,21 @@
+INT n;
+INT i;
+INT prod;
+INT temp;
+
+prod <- 1;
+
+ESCREVER("Introduza a quantidade de números a ler: ");
+LER(n);
+
+ENQUANTO(i<n) {
+    ESCREVER("Introduza um valor: ");
+    LER(temp);
+
+    prod <- prod * temp;
+    
+    i <- i+1;
+}
+
+ESCREVER("O produto dos valores introduzidos é: ", prod);
+ESCREVER("\n");
