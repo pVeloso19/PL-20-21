@@ -1,0 +1,98 @@
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+START
+PUSHS "Considere o seguinte quadrado:\n"
+WRITES
+PUSHS "\n"
+WRITES
+PUSHS "A ---- B\n"
+WRITES
+PUSHS "|      |\n"
+WRITES
+PUSHS "C ---- D\n"
+WRITES
+PUSHS "Introduza o valor da coordenada Ax: "
+WRITES
+READ
+ATOI
+STOREG 0
+PUSHS "Introduza o valor da coordenada Ay: "
+WRITES
+READ
+ATOI
+STOREG 4
+PUSHS "Introduza o valor da coordenada Bx: "
+WRITES
+READ
+ATOI
+STOREG 1
+PUSHS "Introduza o valor da coordenada By: "
+WRITES
+READ
+ATOI
+STOREG 5
+PUSHS "Introduza o valor da coordenada Cx: "
+WRITES
+READ
+ATOI
+STOREG 2
+PUSHS "Introduza o valor da coordenada Cy: "
+WRITES
+READ
+ATOI
+STOREG 6
+PUSHS "Introduza o valor da coordenada Dx: "
+WRITES
+READ
+ATOI
+STOREG 3
+PUSHS "Introduza o valor da coordenada Dy: "
+WRITES
+READ
+ATOI
+STOREG 7
+PUSHG 4
+PUSHG 5
+EQUAL
+JZ else3
+PUSHG 0
+PUSHG 2
+EQUAL
+JZ else2
+PUSHG 6
+PUSHG 7
+EQUAL
+JZ else1
+PUSHG 1
+PUSHG 3
+EQUAL
+JZ else0
+PUSHS "E um quadrado!\n"
+WRITES
+JUMP endIf0
+else0: nop
+PUSHS "Nao e um quadrado!\n"
+WRITES
+endIf0: nop
+JUMP endIf1
+else1: nop
+PUSHS "Nao e um quadrado!\n"
+WRITES
+endIf1: nop
+JUMP endIf2
+else2: nop
+PUSHS "Nao e um quadrado!\n"
+WRITES
+endIf2: nop
+JUMP endIf3
+else3: nop
+PUSHS "Nao e um quadrado!\n"
+WRITES
+endIf3: nop
+STOP

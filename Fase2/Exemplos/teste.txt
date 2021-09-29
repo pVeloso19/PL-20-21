@@ -1,0 +1,23 @@
+INT a;
+INT b;
+INT c;
+LINT l[3];
+
+a <- 1+2*3;
+
+SE (a=7) { 
+    l[0] <- 1; 
+    l[1] <- 2; 
+    l[2] <- 3;
+} { 
+    l[0] <- 3; 
+    l[1] <- 2; 
+    l[2] <- 1;
+}
+
+ENQUANTO (b<3) { 
+    ESCREVER(l[b]); 
+    ESCREVER(" "); 
+    b <- b + 1;
+}
+ESCREVER("\n");

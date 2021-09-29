@@ -1,0 +1,39 @@
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+START
+PUSHI 1
+STOREG 2
+PUSHS "Introduza a quantidade de números a ler: "
+WRITES
+READ
+ATOI
+STOREG 0
+testa0: nop
+PUSHG 1
+PUSHG 0
+INF
+JZ saiciclo0
+PUSHS "Introduza um valor: "
+WRITES
+READ
+ATOI
+STOREG 3
+PUSHG 2
+PUSHG 3
+MUL
+STOREG 2
+PUSHG 1
+PUSHI 1
+ADD
+STOREG 1
+JUMP testa0
+saiciclo0: nop
+PUSHS "O produto dos valores introduzidos é: "
+WRITES
+PUSHG 2
+WRITEI
+PUSHS "\n"
+WRITES
+STOP

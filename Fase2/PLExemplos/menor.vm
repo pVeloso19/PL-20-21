@@ -1,0 +1,42 @@
+PUSHI 0
+PUSHI 0
+PUSHI 0
+PUSHI 0
+START
+PUSHI 9999
+STOREG 3
+PUSHS "Introduza a quantidade de números a ler: "
+WRITES
+READ
+ATOI
+STOREG 0
+testa1: nop
+PUSHG 2
+PUSHG 0
+INF
+JZ saiciclo1
+PUSHS "Introduza um valor: "
+WRITES
+READ
+ATOI
+STOREG 1
+PUSHG 1
+PUSHG 3
+INF
+JZ endIF0
+PUSHG 1
+STOREG 3
+endIF0: nop
+PUSHG 2
+PUSHI 1
+ADD
+STOREG 2
+JUMP testa1
+saiciclo1: nop
+PUSHS "O menor valor introduzido foi: "
+WRITES
+PUSHG 3
+WRITEI
+PUSHS "\n"
+WRITES
+STOP

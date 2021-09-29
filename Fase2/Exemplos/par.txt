@@ -1,0 +1,10 @@
+INT a;
+
+ESCREVER("Introduza um número: ");
+LER(a);
+
+SE ((a%2)!=0) {
+    ESCREVER("É impar");
+} {
+    ESCREVER("É par");
+}

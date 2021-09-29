@@ -1,0 +1,30 @@
+INT i;
+INT j;
+INT tem;
+LINT l[3];
+LINT r[3];
+
+ENQUANTO(i < 3) {
+    ESCREVER("Introduza um valor: ");
+    LER(l[i]);
+
+    i <- i+1;
+}
+
+i <- 2;
+
+ENQUANTO(i >= 0) {
+    r[j] <- l[i];
+    i <- i-1;
+    j <- j+1;
+}
+
+j <- 0;
+
+ESCREVER("lista: [");
+ENQUANTO(j < 3) {
+    ESCREVER(r[j]);
+    ESCREVER(",");
+    j <- j+1;
+}
+ESCREVER("]\n");

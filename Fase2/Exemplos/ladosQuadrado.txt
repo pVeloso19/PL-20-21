@@ -1,0 +1,53 @@
+INT x1;
+INT x2;
+INT x3;
+INT x4;
+
+INT y1;
+INT y2;
+INT y3;
+INT y4;
+
+ESCREVER("Considere o seguinte quadrado:\n");
+ESCREVER("\n");
+ESCREVER("A ---- B\n");
+ESCREVER("|      |\n");
+ESCREVER("C ---- D\n");
+
+ESCREVER("Introduza o valor da coordenada Ax: ");
+LER(x1);
+ESCREVER("Introduza o valor da coordenada Ay: ");
+LER(y1);
+
+ESCREVER("Introduza o valor da coordenada Bx: ");
+LER(x2);
+ESCREVER("Introduza o valor da coordenada By: ");
+LER(y2);
+
+ESCREVER("Introduza o valor da coordenada Cx: ");
+LER(x3);
+ESCREVER("Introduza o valor da coordenada Cy: ");
+LER(y3);
+
+ESCREVER("Introduza o valor da coordenada Dx: ");
+LER(x4);
+ESCREVER("Introduza o valor da coordenada Dy: ");
+LER(y4);
+
+SE (y1 = y2){
+    SE (x1 = x3){
+        SE (y3 = y4){
+            SE (x2 = x4){
+                ESCREVER("E um quadrado!\n");
+            }{
+                ESCREVER("Nao e um quadrado!\n");
+            }
+        }{
+            ESCREVER("Nao e um quadrado!\n");
+        }
+    }{
+        ESCREVER("Nao e um quadrado!\n");
+    }
+}{
+    ESCREVER("Nao e um quadrado!\n");
+}

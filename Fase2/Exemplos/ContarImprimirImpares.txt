@@ -1,0 +1,24 @@
+INT n;
+INT i;
+INT num;
+INT temp;
+
+ESCREVER("Introduza a quantidade de números a ler: ");
+LER(n);
+
+ENQUANTO(i<n) {
+    ESCREVER("Introduza um valor: ");
+    LER(temp);
+
+    SE (temp%2!=0){
+        num <- num + 1;
+        ESCREVER("É impar (", temp);
+        ESCREVER(")\n");
+    }
+    
+    i <- i+1;
+}
+
+ESCREVER("\n");
+ESCREVER("Introduziu ", num);
+ESCREVER(" números impares\n");

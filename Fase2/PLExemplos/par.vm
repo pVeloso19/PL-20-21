@@ -1,0 +1,23 @@
+PUSHI 0
+START
+PUSHS "Introduza um número: "
+WRITES
+READ
+ATOI
+STOREG 0
+PUSHI 1
+PUSHG 0
+PUSHI 2
+MOD
+PUSHI 0
+EQUAL
+SUB
+JZ else0
+PUSHS "É impar"
+WRITES
+JUMP endIf0
+else0: nop
+PUSHS "É par"
+WRITES
+endIf0: nop
+STOP
