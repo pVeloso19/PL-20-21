@@ -15,5 +15,5 @@
 >
 > Para mais detalhes é possivel analisar o [relatório](https://github.com/pVeloso19/PL-20-21/blob/main/TP2/PL20TP2Gr27.pdf) elaborado.
 
-###### TP1: 19/20
-###### TP2: 19/20
+###### NOTA TP1: 19/20
+###### NOTA TP2: 19/20
